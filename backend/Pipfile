@@ -13,6 +13,7 @@ pipenv-setup = "*"
 
 [packages]
 pipenv-to-requirements = "*"
+streamlit = "*"
 
 [requires]
 python_version = "3.7"
