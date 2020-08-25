@@ -12,19 +12,13 @@ repos:
       hooks:
         - id: pylint
           name: pylint
-          entry: pylint backend/package/
+          entry: pylint backend/
           language: system
           always_run: true
           pass_filenames: false
         - id: pipenv-to-requirements
           name: pipenv-to-requirements
           entry: cd backend/ && pipenv_to_requirements
-          language: system
-          always_run: true
-          pass_filenames: false
-        - id: pipenv-setup sync
-          name: pipenv-setup sync
-          entry: cd backend/ && pipenv-setup sync --pipfile 
           language: system
           always_run: true
           pass_filenames: false

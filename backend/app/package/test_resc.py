@@ -1,7 +1,7 @@
 """
 Tests resc.py.
 """
-from package import add, sub
+from . import add, sub  # pylint: disable=import-error
 
 
 def test_add():

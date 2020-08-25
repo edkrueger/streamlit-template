@@ -9,11 +9,9 @@ pylint = "*"
 pre-commit = "*"
 pytest = "*"
 pipenv-to-requirements = "*"
-pipenv-setup = "*"
 
 [packages]
 streamlit = "*"
-package = {editable = true, path = "."}
 
 [requires]
 python_version = "3.7"
