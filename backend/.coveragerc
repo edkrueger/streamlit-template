@@ -1,2 +1,2 @@
 [run]
-omit = package/test_*
+omit = app/package/test_*
