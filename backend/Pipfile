@@ -9,6 +9,7 @@ pylint = "*"
 pre-commit = "*"
 pytest = "*"
 pipenv-to-requirements = "*"
+pytest-cov = "*"
 
 [packages]
 streamlit = "*"
