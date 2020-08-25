@@ -12,8 +12,8 @@ pipenv-to-requirements = "*"
 pipenv-setup = "*"
 
 [packages]
-pipenv-to-requirements = "*"
 streamlit = "*"
+package = {editable = true, path = "."}
 
 [requires]
 python_version = "3.7"

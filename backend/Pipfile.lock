@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b2c8a1a0c3150549c8fcb07c4df8e3ae12996eadbfbd6b702594d74e82b01e5c"
+            "sha256": "2477b016f613670feb0195f40f381e30d66b2f5391ad01084a5896feeab09bf9"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -430,6 +430,10 @@
             "markers": "python_version >= '3.6'",
             "version": "==1.19.1"
         },
+        "package": {
+            "editable": true,
+            "path": "."
+        },
         "packaging": {
             "hashes": [
                 "sha256:4357f74f47b9c12db93624a82154e9b120fa8293699949152b22065d556079f8",
@@ -549,7 +553,6 @@
                 "sha256:1c18682a4ec70eb07261d2b558df3ee22ea00192663a1b98fd1e45e22946c163",
                 "sha256:cb70471a17a7d4658caffe989539413313d51df1b3a54838bcd7e7d3ab3fcc18"
             ],
-            "index": "pypi",
             "version": "==0.9.0"
         },
         "prometheus-client": {
@@ -1124,7 +1127,6 @@
                 "sha256:1c18682a4ec70eb07261d2b558df3ee22ea00192663a1b98fd1e45e22946c163",
                 "sha256:cb70471a17a7d4658caffe989539413313d51df1b3a54838bcd7e7d3ab3fcc18"
             ],
-            "index": "pypi",
             "version": "==0.9.0"
         },
         "pipfile": {
