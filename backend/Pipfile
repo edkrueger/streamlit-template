@@ -17,5 +17,8 @@ streamlit = "*"
 [requires]
 python_version = "3.7"
 
+[scripts]
+start = "streamlit run app/app.py"
+
 [pipenv]
 allow_prereleases = true
