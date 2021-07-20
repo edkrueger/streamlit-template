@@ -1,28 +1,24 @@
 # streamlit-template
 
 ## Python Dev Tools Setup
-Change into `backend` directory.
-Run `pipenv install --dev` to install the env.
-Run `pipenv shell`.
-Run `pre-commit install` to initialize the git hooks.
-Run `pre-commit run --all-files` if there are file that were committed before adding the git hooks.
-Run `pytest --cov-config=.coveragerc --cov=app/package` to run tests.
-Note: Currently, `pipenv_to_requirements` must be run manually to sync `requirements.txt` and `requirements-dev.txt`.
+To install the env, run `pipenv install --dev`  
+To initialize the git hooks, run `pipenv run pre-commit install`  
+If there are file that were committed before adding the git hooks, run `pipenv run pre-commit run --all-files`  
+To run tests, run `pipenv run pytest --cov-config=.coveragerc --cov=resc`  
 
 ## Run Streamlit for Development
-Run `pipenv run start` or
-Run `pipenv shell` then run `streamlit run app/app.py` or
-Run `pipenv run streamlit run app/app.py`
+To run the app, run `pipenv run streamlit run app/app.py`  
+Alternatively, run `pipenv run start`  
 
 ## Build and Run with Docker
-Change into `backend` directory.
-Build with `docker build . -t streamlit-app`.
-Run with `docker run -p 80:8080 -e PORT=8080 streamlit-app`.
-Note: This will run the app on port 8080 inside the container and port 80 outside of the container.
-To reference it outside of the container, the URL is `http://localhost/`
+If you haven't run the hooks, before builtind, run `pipenv run pre-commit run --all-files`  
+To build the container, run `docker build . -t streamlit-app`  
+Run with `docker run -p 80:8080 -e PORT=8080 streamlit-app`  
+Note: This will run the app on port 8080 inside the container and port 80 outside of the container.  
+_Ignore the urls and ports in the terminal -- those are the ones in the Docker network._  
+To reference it outside of the container, the URL is `http://localhost/`  
 
 ## Deploy to GCP Compute Engine
-Change into `backend` directory.  
 Run `gcloud init` to select you account and project.
 Run `export PROJECT=$(gcloud config get-value project)` to get and save your project id.
 Run `export GCR_TAG=gcr.io/$PROJECT/my-app` to get the GCR tag.
@@ -38,7 +34,6 @@ Run `export GCR_TAG=<GCR TAG>`.
 Run `docker run -p 80:8080 -e PORT=8080 $GCR_TAG`.
 
 ## Deploy to Azure 
-cd Change into `backend` directory.  
 Set the following environmental variables:  
 
 ```
@@ -91,5 +86,4 @@ The steps boil down to the following:
   "python.jediEnabled": true,
 }
 ```
-6. Change into `backend` and run `pipenv --py` in your terminal to find the actual path
-7. Restart VSCode
+6. Restart VSCode

@@ -12,13 +12,18 @@ repos:
       hooks:
         - id: pylint
           name: pylint
-          entry: pylint backend/
+          entry: pylint app/ resc/ tests/
           language: system
           always_run: true
           pass_filenames: false
         - id: pipenv-to-requirements
           name: pipenv-to-requirements
-          entry: cd backend/ && pipenv_to_requirements
+          entry: pipenv_to_requirements
           language: system
           always_run: true
+          pass_filenames: false
+        - id: pipenv-setup sync
+          name: pipenv-setup sync
+          entry: pipenv run pipenv-setup sync
+          language: system
           pass_filenames: false
