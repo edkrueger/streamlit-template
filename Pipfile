@@ -10,9 +10,11 @@ pre-commit = "*"
 pytest = "*"
 pipenv-to-requirements = "*"
 pytest-cov = "*"
+pipenv-setup = "*"
 
 [packages]
 streamlit = "*"
+resc = {editable = true, path = "."}
 
 [requires]
 python_version = "3.7"

@@ -10,4 +10,10 @@
 # `Pipfile.lock` and then regenerate `requirements*.txt`.
 ################################################################################
 
-streamlit
+black
+pipenv-setup
+pipenv-to-requirements
+pre-commit
+pylint
+pytest
+pytest-cov
