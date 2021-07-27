@@ -13,26 +13,44 @@ Alternatively, run `pipenv run start`
 ## Build and Run with Docker
 If you haven't run the hooks, before builtind, run `pipenv run pre-commit run --all-files`  
 To build the container, run `docker build . -t streamlit-app`  
-Run with `docker run -p 80:8080 -e PORT=8080 streamlit-app`  
-Note: This will run the app on port 8080 inside the container and port 80 outside of the container.  
+Run with `docker run -p 80:80 streamlit-app`  
+Note: This will run the app on port 80 inside the container and port 80 outside of the container.  
 _Ignore the urls and ports in the terminal -- those are the ones in the Docker network._  
 To reference it outside of the container, the URL is `http://localhost/`  
 
 ## Deploy to GCP Compute Engine
-Run `gcloud init` to select you account and project.
-Run `export PROJECT=$(gcloud config get-value project)` to get and save your project id.
-Run `export GCR_TAG=gcr.io/$PROJECT/my-app` to get the GCR tag.
-Run `gcloud builds submit --tag $GCR_TAG` to submit the build to GCP Cloud Build.
-Run `echo $GCR_TAG` to see the GCR tag.
-Go to "Compute Engine" in the GCP UI and select "CREATE INSTANCE".
-In the options select the checkbox "Deploy a container image to this VM instance."
-Paste in the GCR tag in the "Container Image" field.
-Select "Allow HTTP traffic" for a public deployment.
-Click "Create".
-Click "SSH".
-Run `export GCR_TAG=<GCR TAG>`.
-Run `docker run -p 80:8080 -e PORT=8080 $GCR_TAG`.
+### Build and Deploy to GCR
+To select you account and project, run `gcloud init`  
+Select a default compute region  
+To get and save your project id, run `export PROJECT=$(gcloud config get-value project)`  
+To get the GCR tag, run `export GCR_TAG=gcr.io/$PROJECT/my-app`  
+To submit the build to GCP Cloud Build, run `gcloud builds submit --tag $GCR_TAG`  
+To see the GCR tag, run `echo $GCR_TAG`  
 
+### Manually Deploy to GCE and Start Container option 1)
+Go to "Compute Engine" in the GCP UI and select "CREATE INSTANCE".  
+In the options select the checkbox "Deploy a container image to this VM instance."  
+Paste in the GCR tag in the "Container Image" field.  
+Select "Allow HTTP traffic" for a public deployment.  
+Click "Create".  
+
+### Automatically Deploy to GCE and Start Container (option 2)
+
+Run:
+```
+gcloud compute instances create-with-container streamlit \
+  --machine-type e2-small \
+  --container-image $GCR_TAG \
+  --container-command "streamlit run app/app.py --server.port 80" \
+  --tags streamlit
+```
+
+Run: 
+```
+gcloud compute firewall-rules create allow-http \
+  --allow tcp:80 \
+  --target-tags streamlit
+``` 
 ## Deploy to Azure 
 Set the following environmental variables:  
 
@@ -66,7 +84,6 @@ az container create \
     --registry-password $ACR_ADMIN_PASSWORD \
     --environment-variables PORT=80
 ```
-
 
 
 ## Integrating Pipenv with VSCode
